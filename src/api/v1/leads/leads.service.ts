@@ -2,18 +2,23 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable, Logger } from '@nestjs/common';
 import { AxiosError, AxiosRequestConfig } from 'axios';
 import { catchError, firstValueFrom } from 'rxjs';
-import { ContactItem, ContactsListResponseData } from 'src/mocks/contactsList';
 
-import { LeadItem, LeadsListResponseData } from 'src/mocks/leadsList';
+import type {
+  ContactItem,
+  ContactsListResponseData,
+} from 'src/mocks/contactsList';
+import type { LeadItem, LeadsListResponseData } from 'src/mocks/leadsList';
 
 type LeadContactWithData = LeadItem['_embedded']['contacts'][number] & {
   data: ContactItem;
 };
 
-type LeadWithContacts = LeadItem & {
-  _embedded: {
-    contacts: LeadContactWithData[];
-  };
+type LeadItemEmbedded = LeadItem['_embedded'] & {
+  contacts: LeadContactWithData[];
+};
+
+export type LeadWithContacts = LeadItem & {
+  _embedded: LeadItemEmbedded;
 };
 
 type ContactsMap = { [key: ContactItem['id']]: ContactItem };
@@ -33,7 +38,7 @@ export class LeadsService {
 
     const contactIds = Array.from(
       new Set(
-        leadsResponse.data._embedded.leads.flatMap((l) =>
+        leadsResponse._embedded.leads.flatMap((l) =>
           l._embedded.contacts.map((c) => c.id),
         ),
       ),
@@ -46,16 +51,14 @@ export class LeadsService {
 
     if (contactIds.length) {
       contactsResponse = await this._getContacts({ contactIds });
-      contactsMap = contactsResponse?.data._embedded.contacts.reduce(
-        (c: ContactItem, acc: ContactsMap) => {
-          acc[c.id] = c;
-          return acc;
-        },
-        {},
-      );
+      contactsMap = contactsResponse?._embedded.contacts.reduce((acc, c) => {
+        acc[c.id] = c;
+        return acc;
+      }, {});
     }
 
-    const leads = leadsResponse?.data._embedded?.leads.map((l) => ({
+    // добавляем к каждому контакту дополнительное поле "data" с информацией
+    const leads = leadsResponse?._embedded.leads.map((l) => ({
       ...l,
       _embedded: {
         ...l._embedded,
@@ -82,7 +85,7 @@ export class LeadsService {
     });
   }
 
-  _getLeads({ query }: { query: string } = { query: '' }) {
+  async _getLeads({ query }: { query: string } = { query: '' }) {
     const params: { [key: string]: string | number } = {
       with: 'contacts',
     };
@@ -91,7 +94,7 @@ export class LeadsService {
       params.query = query;
     }
 
-    return firstValueFrom(
+    const { data } = await firstValueFrom(
       this._requestAMOCRM<LeadsListResponseData>({
         url: '/api/v4/leads',
         params,
@@ -102,16 +105,20 @@ export class LeadsService {
         }),
       ),
     );
+
+    return data;
   }
 
-  _getContacts({ contactIds }: { contactIds: number[] } = { contactIds: [] }) {
+  async _getContacts(
+    { contactIds }: { contactIds: number[] } = { contactIds: [] },
+  ) {
     const params: AxiosRequestConfig['params'] = {
       filter: {
         id: contactIds,
       },
     };
 
-    return firstValueFrom(
+    const { data } = await firstValueFrom(
       this._requestAMOCRM<ContactsListResponseData>({
         url: '/api/v4/contacts',
         params,
@@ -122,5 +129,7 @@ export class LeadsService {
         }),
       ),
     );
+
+    return data;
   }
 }
