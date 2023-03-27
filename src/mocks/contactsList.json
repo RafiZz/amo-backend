@@ -1,0 +1,128 @@
+{
+  "_page": 1,
+  "_links": {
+    "self": {
+      "href": "https://example.amocrm.ru/api/v4/contacts?filter%5Bid%5D=%5B1914179%2C2448709%5D&page=1&limit=50"
+    }
+  },
+  "_embedded": {
+    "contacts": [
+      {
+        "id": 1914179,
+        "name": "Contact name",
+        "first_name": "",
+        "last_name": "",
+        "responsible_user_id": 9411550,
+        "group_id": 0,
+        "created_by": 9411550,
+        "updated_by": 9411550,
+        "created_at": 1679596226,
+        "updated_at": 1679596226,
+        "closest_task_at": null,
+        "is_deleted": false,
+        "is_unsorted": false,
+        "custom_fields_values": [
+          {
+            "field_id": 460259,
+            "field_name": "Телефон",
+            "field_code": "PHONE",
+            "field_type": "multitext",
+            "values": [
+              { "value": "1231231", "enum_id": 251013, "enum_code": "WORK" }
+            ]
+          },
+          {
+            "field_id": 460261,
+            "field_name": "Email",
+            "field_code": "EMAIL",
+            "field_type": "multitext",
+            "values": [
+              {
+                "value": "contact@email.com",
+                "enum_id": 251025,
+                "enum_code": "WORK"
+              }
+            ]
+          }
+        ],
+        "account_id": 30957638,
+        "_links": {
+          "self": {
+            "href": "https://example.amocrm.ru/api/v4/contacts/1914179?filter%5Bid%5D=%5B1914179%2C2448709%5D&page=1&limit=50"
+          }
+        },
+        "_embedded": {
+          "tags": [],
+          "companies": [
+            {
+              "id": 1914177,
+              "_links": {
+                "self": {
+                  "href": "https://example.amocrm.ru/api/v4/companies/1914177?filter%5Bid%5D=%5B1914179%2C2448709%5D&page=1&limit=50"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": 2448709,
+        "name": "Second contact",
+        "first_name": "",
+        "last_name": "",
+        "responsible_user_id": 9411550,
+        "group_id": 0,
+        "created_by": 9411550,
+        "updated_by": 9411550,
+        "created_at": 1679847599,
+        "updated_at": 1679847599,
+        "closest_task_at": null,
+        "is_deleted": false,
+        "is_unsorted": false,
+        "custom_fields_values": [
+          {
+            "field_id": 460259,
+            "field_name": "Телефон",
+            "field_code": "PHONE",
+            "field_type": "multitext",
+            "values": [
+              { "value": "3213213232", "enum_id": 251013, "enum_code": "WORK" }
+            ]
+          },
+          {
+            "field_id": 460261,
+            "field_name": "Email",
+            "field_code": "EMAIL",
+            "field_type": "multitext",
+            "values": [
+              {
+                "value": "second@contact.test",
+                "enum_id": 251025,
+                "enum_code": "WORK"
+              }
+            ]
+          }
+        ],
+        "account_id": 30957638,
+        "_links": {
+          "self": {
+            "href": "https://example.amocrm.ru/api/v4/contacts/2448709?filter%5Bid%5D=%5B1914179%2C2448709%5D&page=1&limit=50"
+          }
+        },
+        "_embedded": {
+          "tags": [],
+          "companies": [
+            {
+              "id": 2448707,
+              "_links": {
+                "self": {
+                  "href": "https://example.amocrm.ru/api/v4/companies/2448707?filter%5Bid%5D=%5B1914179%2C2448709%5D&page=1&limit=50"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

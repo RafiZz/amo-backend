@@ -1,0 +1,112 @@
+{
+  "_page": 1,
+  "_links": {
+    "self": {
+      "href": "https://example.amocrm.ru/api/v4/leads?with=contacts&page=1&limit=50"
+    }
+  },
+  "_embedded": {
+    "leads": [
+      {
+        "id": 911689,
+        "name": "First lead",
+        "price": 1000,
+        "responsible_user_id": 9411550,
+        "group_id": 0,
+        "status_id": 56167130,
+        "pipeline_id": 6612862,
+        "loss_reason_id": null,
+        "created_by": 9411550,
+        "updated_by": 9411550,
+        "created_at": 1679596226,
+        "updated_at": 1679596226,
+        "closed_at": null,
+        "closest_task_at": null,
+        "is_deleted": false,
+        "custom_fields_values": null,
+        "score": null,
+        "account_id": 30957638,
+        "labor_cost": null,
+        "_links": {
+          "self": {
+            "href": "https://example.amocrm.ru/api/v4/leads/911689?with=contacts&page=1&limit=50"
+          }
+        },
+        "_embedded": {
+          "tags": [],
+          "companies": [
+            {
+              "id": 1914177,
+              "_links": {
+                "self": {
+                  "href": "https://example.amocrm.ru/api/v4/companies/1914177?with=contacts&page=1&limit=50"
+                }
+              }
+            }
+          ],
+          "contacts": [
+            {
+              "id": 1914179,
+              "is_main": true,
+              "_links": {
+                "self": {
+                  "href": "https://example.amocrm.ru/api/v4/contacts/1914179?with=contacts&page=1&limit=50"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": 1327403,
+        "name": "Second lead",
+        "price": 5000,
+        "responsible_user_id": 9411550,
+        "group_id": 0,
+        "status_id": 56167130,
+        "pipeline_id": 6612862,
+        "loss_reason_id": null,
+        "created_by": 9411550,
+        "updated_by": 9411550,
+        "created_at": 1679847599,
+        "updated_at": 1679847599,
+        "closed_at": null,
+        "closest_task_at": null,
+        "is_deleted": false,
+        "custom_fields_values": null,
+        "score": null,
+        "account_id": 30957638,
+        "labor_cost": null,
+        "_links": {
+          "self": {
+            "href": "https://example.amocrm.ru/api/v4/leads/1327403?with=contacts&page=1&limit=50"
+          }
+        },
+        "_embedded": {
+          "tags": [],
+          "companies": [
+            {
+              "id": 2448707,
+              "_links": {
+                "self": {
+                  "href": "https://example.amocrm.ru/api/v4/companies/2448707?with=contacts&page=1&limit=50"
+                }
+              }
+            }
+          ],
+          "contacts": [
+            {
+              "id": 2448709,
+              "is_main": true,
+              "_links": {
+                "self": {
+                  "href": "https://example.amocrm.ru/api/v4/contacts/2448709?with=contacts&page=1&limit=50"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
