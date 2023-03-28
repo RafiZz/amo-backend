@@ -1,4 +1,4 @@
-import contactsList from './contactsList.json';
+import type contactsList from './contactsList.json';
 
 export type ContactsListResponseData = typeof contactsList;
 
