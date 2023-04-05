@@ -22,10 +22,12 @@ describe('LeadsController', () => {
     it('/api/v1/leads', async () => {
       jest
         .spyOn(leadsService, '_getLeads')
-        .mockImplementation(() => import('../../../mocks/leadsList.json'));
+        .mockImplementation(() => import('../../../fixtures/leadsList.json'));
       jest
         .spyOn(leadsService, '_getContacts')
-        .mockImplementation(() => import('../../../mocks/contactsList.json'));
+        .mockImplementation(
+          () => import('../../../fixtures/contactsList.json'),
+        );
 
       const leads = await leadsController.getLeads();
 

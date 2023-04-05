@@ -6,8 +6,8 @@ import { catchError, firstValueFrom } from 'rxjs';
 import type {
   ContactItem,
   ContactsListResponseData,
-} from 'src/mocks/contactsList';
-import type { LeadItem, LeadsListResponseData } from 'src/mocks/leadsList';
+} from 'src/types/contactsList';
+import type { LeadItem, LeadsListResponseData } from 'src/types/leadsList';
 
 type LeadContactWithData = LeadItem['_embedded']['contacts'][number] & {
   data: ContactItem;
